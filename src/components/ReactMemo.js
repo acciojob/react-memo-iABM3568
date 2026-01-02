@@ -1,7 +1,17 @@
 import React from "react";
 
-const ReactMemo = React.memo(() => {
-  return <p>React Memo Component</p>;
-});
+const Skills = () => {
+  return (
+    <>
+      <h2>React.memo</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+      </ul>
+    </>
+  );
+};
 
-export default ReactMemo;
+export default React.memo(Skills);
