@@ -5,19 +5,11 @@ import ReactMemo from "./ReactMemo";
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [count, setCount] = useState(0);
-  const [input, setInput] = useState("");
 
   useEffect(() => {}, [todos]);
 
   const addTodo = () => {
-    setTodos([...todos, "New todo"]);
-  };
-
-  const submitTodo = () => {
-    if (input.length > 5) {
-      setTodos([...todos, input]);
-      setInput("");
-    }
+    setTodos([...todos, "New Todo"]);
   };
 
   return (
@@ -28,8 +20,8 @@ const App = () => {
       <button onClick={addTodo}>Add Todo</button>
 
       <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+        {todos.map((todo, i) => (
+          <li key={i}>{todo}</li>
         ))}
       </ul>
 
@@ -41,13 +33,6 @@ const App = () => {
       <UseMemo count={count} />
 
       <hr />
-
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={submitTodo}>Submit</button>
 
       <ReactMemo />
     </div>
