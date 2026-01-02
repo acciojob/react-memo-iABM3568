@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Skills = () => {
+  const [skills, setSkills] = useState([
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React"
+  ]);
+  const [input, setInput] = useState("");
+
+  const addSkill = () => {
+    if (input.length > 5) {
+      setSkills([...skills, input]);
+      setInput("");
+    }
+  };
+
   return (
     <>
       <h2>React.memo</h2>
+
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button onClick={addSkill}>Add Skill</button>
+
       <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>React</li>
+        {skills.map((skill, i) => (
+          <li key={i}>{skill}</li>
+        ))}
       </ul>
     </>
   );
