@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
 
 const UseMemo = ({ count }) => {
-  const calculation = useMemo(() => {
-    console.log("Expensive calculation running");
+  const value = useMemo(() => {
     let num = 0;
     for (let i = 0; i < 100000000; i++) {
       num++;
@@ -13,7 +12,7 @@ const UseMemo = ({ count }) => {
   return (
     <>
       <h2>Expensive Calculation</h2>
-      <p>{calculation}</p>
+      <p>{value}</p>
     </>
   );
 };
