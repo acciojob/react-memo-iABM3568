@@ -3,19 +3,17 @@ import UseMemo from "./UseMemo";
 import ReactMemo from "./ReactMemo";
 
 const App = () => {
-  const [todos, setTodos] = useState(["Todo 1", "Todo 2"]);
+  const [todos, setTodos] = useState([]);
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
 
-  useEffect(() => {
-    // Effect intentionally kept simple for Cypress
-  }, [todos]);
+  useEffect(() => {}, [todos]);
 
   const addTodo = () => {
     setTodos([...todos, "New todo"]);
   };
 
-  const submitCustomTodo = () => {
+  const submitTodo = () => {
     if (input.length > 5) {
       setTodos([...todos, input]);
       setInput("");
@@ -24,8 +22,9 @@ const App = () => {
 
   return (
     <div id="main">
-      <h1>Todo App</h1>
+      <h1>React.useMemo</h1>
 
+      <h2>My todos</h2>
       <button onClick={addTodo}>Add Todo</button>
 
       <ul>
@@ -34,19 +33,21 @@ const App = () => {
         ))}
       </ul>
 
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
+      <hr />
+
       <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
 
       <UseMemo count={count} />
+
+      <hr />
 
       <input
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button onClick={submitCustomTodo}>Submit</button>
+      <button onClick={submitTodo}>Submit</button>
 
       <ReactMemo />
     </div>
