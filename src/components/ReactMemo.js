@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const Skills = () => {
+  console.log("React.memo component rendered");
+
   const [skills, setSkills] = useState([
     "HTML",
     "CSS",
